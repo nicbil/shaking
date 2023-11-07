@@ -8,9 +8,20 @@ export default function App() {
       console.log(permissionState);
       setPermission(permissionState)
       if (permissionState === 'granted') {
-        window.addEventListener('devicemotion', handleMotionEvent);
+
       }
-    }).catch(console.error);
+
+      if (permissionState === 'granted') {
+        alert('denied');
+        window.addEventListener('devicemotion', handleMotionEvent);
+      } else if (permissionState === 'denied') {
+        alert('denied');
+      } else if (permissionState === 'prompt') {
+        alert('prompt');
+      }
+    }).catch(error => {
+      alert(error);
+    });
   } else {
     window.addEventListener('devicemotion', handleMotionEvent);
   }
