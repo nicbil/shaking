@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState }  from 'react';
 
 export default function App() {
+  const [clickCount, setClickCount] = useState(0);
   if (typeof DeviceMotionEvent.requestPermission === 'function') {
     DeviceMotionEvent.requestPermission().then((permissionState) => {
       console.log(permissionState);
@@ -13,11 +14,12 @@ export default function App() {
   }
 
   function handleMotionEvent(event) {
-    const x = event.accelerationIncludingGravity.x;
+    setClickCount(event.accelerationIncludingGravity.x);
+/*    const x = event.accelerationIncludingGravity.x;
     const y = event.accelerationIncludingGravity.y;
-    const z = event.accelerationIncludingGravity.z;
-    return (<div>{x} - {y} - {z}</div>);
+    const z = event.accelerationIncludingGravity.z;*/
+
   }
 
-  return (<div>{typeof DeviceMotionEvent.requestPermission}</div>);
+  return (<div>{clickCount} - {typeof DeviceMotionEvent.requestPermission}</div>);
 }
