@@ -19,5 +19,5 @@ export default function App() {
     return (<div>{x} - {y} - {z}</div>);
   }
 
-  return <div>Test</div>;
+  return (<div>{typeof DeviceMotionEvent.requestPermission}</div>);
 }
